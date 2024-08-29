@@ -1,0 +1,52 @@
+{
+  "packageManager": "npm@10.8.1",
+  "engineStrict": true,
+  "private": true,
+  "engines": {
+    "node": ">=20.16.0"
+  },
+  "scripts": {
+    "serve": "ts-node-dev -r tsconfig-paths/register --env-file=.env.local --inspect=0.0.0.0 src/main.ts",
+    "build": "rimraf ./dist && npx swc ./src --out-dir ./dist --strip-leading-paths",
+    "start": "node -r ts-node/register/transpile-only -r tsconfig-paths/register --env-file=.env.prod dist/main.js",
+    "prettier": "prettier --write .",
+    "lint:fix": "npx eslint . --fix",
+    "prelint": "npm run prettier && npm run lint:fix",
+    "lint": "npx eslint .",
+    "prepare": "husky"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^19.4.0",
+    "@commitlint/config-conventional": "^19.2.2",
+    "@eslint/js": "^9.9.1",
+    "@swc/cli": "^0.4.0",
+    "@swc/core": "^1.7.11",
+    "@types/express": "^4.17.21",
+    "@types/mongoose": "^5.11.97",
+    "@types/morgan": "^1.9.9",
+    "@types/node": "^22.5.0",
+    "cz-conventional-changelog": "^3.3.0",
+    "eslint": "^9.9.1",
+    "globals": "^15.9.0",
+    "husky": "^9.1.5",
+    "lint-staged": "^15.2.9",
+    "prettier": "^3.3.3",
+    "ts-node-dev": "^2.0.0",
+    "tsconfig-paths": "^4.2.0",
+    "typescript": "^5.5.4",
+    "typescript-eslint": "^8.2.0",
+    "zod": "^3.23.8"
+  },
+  "dependencies": {
+    "express": "^4.19.2",
+    "mongoose": "^8.6.0",
+    "morgan": "^1.10.0",
+    "rimraf": "^6.0.1",
+    "ts-node": "^10.9.2"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  }
+}
